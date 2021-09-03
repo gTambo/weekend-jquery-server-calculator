@@ -12,9 +12,25 @@
 <body>
     <h1>Calculate!</h1>
 
-    <input type="number" id="first-number">
-    <input type="text" id="operation">
-    <input type="number" id="second-number">
-    <button id="submit-button">=</button>
+    Enter a number<input type="number" id="first-number" placeholder="3">
+    Operation:<input type="text" id="operation" placeholder="+">
+    Enter a number<input type="number" id="second-number" placeholder="4">
+    <button id="submit-button"> = </button>
+    <button id="clear-button">Clear</button>
+
+    <table id="calcualtion-history">
+        <thead class="">
+            <th id="old-first-number">Number</th>
+            <th id="old-operation">Operation</th>
+            <th id="old-second-number">Number</th>
+        </thead>
+        <tbody class="">
+            <tr>
+                <td>Some number</td>
+                <td>times, divided by, plus, minus</td>
+                <td>Some other number</td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>

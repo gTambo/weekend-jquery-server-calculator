@@ -8,8 +8,8 @@ Your project description goes here. What problem did you solve? How did you solv
 
 ## Checklist
 
-- [ ] Create complete app file tree, with static files
-- [ ] HTML doc with 3 input fields, submit ('=') button, clear button
+- [x] Create complete app file tree, with static files
+- [x] HTML doc with 3 input fields, submit ('=') button, clear button
 - [ ] post from client as object
 - [ ] receive post on server 
 - [ ] server calculation functions
