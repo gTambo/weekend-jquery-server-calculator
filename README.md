@@ -10,7 +10,7 @@ Gotta get some numbers from the client, perform the selected operation on them i
 
 - [x] Create complete app file tree, with static files
 - [x] HTML doc with 3 input fields, submit ('=') button, clear button
-- [ ] post from client as object
+- [x] post from client as object
 - [x] receive post on server 
 - [ ] server calculation functions
 - [ ] server store history
