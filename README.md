@@ -4,14 +4,14 @@ Basic Calculator
 
 ## Description
 
-Your project description goes here. What problem did you solve? How did you solve it?
+Gotta get some numbers from the client, perform the selected operation on them in a server, save the data, and send it back to the client, retaining the history. All returned information needs to be visible to the client. Stored information and calculation functions need to not be accessible to client. Client is given option to clear input fields. These actionsneeds to be repeatable, and remain on the DOM on page reload. 
 
 ## Checklist
 
 - [x] Create complete app file tree, with static files
 - [x] HTML doc with 3 input fields, submit ('=') button, clear button
 - [ ] post from client as object
-- [ ] receive post on server 
+- [x] receive post on server 
 - [ ] server calculation functions
 - [ ] server store history
 - [ ] server side get request for calculation result
