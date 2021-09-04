@@ -13,7 +13,7 @@ Gotta get some numbers from the client, perform the selected operation on them i
 - [x] post from client as object
 - [x] receive post on server 
 - [x] server calculation functions
-- [ ] server store history
+- [x] server store history
 - [ ] server side get request for calculation result
 - [ ] get for history of requests
 - [ ] client side get result
