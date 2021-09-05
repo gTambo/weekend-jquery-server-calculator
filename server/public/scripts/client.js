@@ -3,17 +3,39 @@ $(readyNow);
 function readyNow() {
     console.log('Document ready');
     $('#submit-button').on('click', postToCalculate); 
+    $('#clear-button').on('click', clearInputs);
 
-    $('#add').on('click', addToData);
-    $('#subtract').on('click', subtractToData);
-    $('#multiply').on('click', multiplyToData);
-    $('#divide').on('click', divideToData);
+    $('#add').on('click', passOperationToData);
+    $('#subtract').on('click', passOperationToData);
+    $('#multiply').on('click', passOperationToData);
+    $('#divide').on('click', passOperationToData);
 
     getCalculationHistory();
 }
 
 let dataToCalculate = {};
 
+function passOperationToData() {
+    let operation = '';
+    switch($(this).attr('id')){
+        case 'add':
+            operation = '+';
+            break;
+        case 'subtract':
+            operation = '-';
+            break;
+        case 'multiply':
+            operation = '*';
+            break;
+        case 'divide':
+            operation = '/';
+            break;
+    }
+    console.log('operation: ', operation);
+    dataToCalculate.op = operation;
+}
+
+/**
 function addToData() {
     console.log('chose add');
     dataToCalculate.op = '+';
@@ -32,6 +54,11 @@ function multiplyToData() {
 function divideToData() {
     console.log('chose divide');
     dataToCalculate.op = '/';
+}
+*/
+
+function clearInputs() {
+    $('input').val('');
 }
 
 function postToCalculate () {

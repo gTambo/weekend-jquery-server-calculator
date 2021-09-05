@@ -22,7 +22,8 @@ Gotta get some numbers from the client, perform the selected operation on them i
 - [x] client side get result
 - [x] append result to DOM
 - [x] append history to DOM
-- [ ] don't forget the clear button function
+- [x] don't forget the clear button function
+- [x] send all operation buttons through single function
 
 ## Stretch
 

@@ -1,10 +1,22 @@
 body {
+    background-color: darkgoldenrod;
     margin: 0;
     padding: 0%;
 }
-/* #first-number {
-    float: left; */
+#first-number {
+    float: inline-start; 
+}   
+
+#operations {
+    color: darkgreen;
 }
+
 #second-number {
-    float: right;
+    float: inline-end;
+}
+
+
+
+#add{
+    background-color: purple;
 }
