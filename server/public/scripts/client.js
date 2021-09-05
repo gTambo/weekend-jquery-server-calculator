@@ -67,7 +67,17 @@ function getCalculationHistory() {
 
 function appendHistoryToDom(responseFromGet) {
     console.log('in appendHistoryToDom', responseFromGet);
-    
+    $('#calc-history-body').empty();
+    for (let i = 0; i < responseFromGet.length; i++) {
+        let prevCalc = responseFromGet[i];
+        $('#calc-history-body').append(`
+            <tr>
+                <td>${prevCalc.first}</td>
+                <td>${prevCalc.op}</td>
+                <td>${prevCalc.second}</td>
+            </tr>
+        `);
+    }
 }
 
 function getHistoryError() {

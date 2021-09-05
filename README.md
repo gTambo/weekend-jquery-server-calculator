@@ -21,8 +21,8 @@ Gotta get some numbers from the client, perform the selected operation on them i
 - [x] get for history of requests
 - [x] client side get result
 - [x] append result to DOM
-- [ ] append history to DOM
-
+- [x] append history to DOM
+- [ ] don't forget the clear button function
 
 ## Stretch
 
@@ -32,7 +32,7 @@ Gotta get some numbers from the client, perform the selected operation on them i
 - [ ] prevent post if any input fields are empty
 - [ ] show alert if empty
 - [ ]
-- [ ] Dlelte button for clearing history
+- [ ] Delete button for clearing history
 - [ ] Make delete request
 - [ ] Make pathway from historical entries back to server ('POST'?)
 - [ ]
