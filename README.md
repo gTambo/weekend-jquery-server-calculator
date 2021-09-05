@@ -16,8 +16,8 @@ Gotta get some numbers from the client, perform the selected operation on them i
 - [x] server store history
 - [x] split operations into 4 buttons
 - [x] send button clicks to post
-- [ ] modify client and server POSTs as necessary
-- [ ] server side get request for calculation result
+- [x] modify client and server POSTs as necessary
+- [x] server side post request for calculation result
 - [ ] get for history of requests
 - [ ] client side get result
 - [ ] append result to DOM

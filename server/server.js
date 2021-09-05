@@ -10,7 +10,7 @@ app.use(express.static('server/public'));
 
 let calcualtionHistory = [];
 
-function makeCalculation (num1, opString, num2) {
+function makeCalculation (opString, num1, num2) {
     if (opString == '+') {
         return num1 + num2;
     } else if (opString == '-') {
@@ -25,12 +25,12 @@ function makeCalculation (num1, opString, num2) {
 app.post('/tocalculate', (req, res) => {
     const numbersToCalculate = req.body;
     console.log('Received numbers to calculate', numbersToCalculate);
-    let first = parseInt(numbersToCalculate.first);
     let operation = numbersToCalculate.op;
+    let first = parseInt(numbersToCalculate.first);
     let second = parseInt(numbersToCalculate.second);
     // some calculate function, post to history?
     calcualtionHistory.unshift(numbersToCalculate);
-    const calculationResult = makeCalculation(first, operation, second);
+    let calculationResult = makeCalculation(operation, first, second);
     console.log('Calculation result: ', calculationResult);
     
     res.send({ result: calculationResult});
