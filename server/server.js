@@ -26,8 +26,8 @@ app.post('/tocalculate', (req, res) => {
     const numbersToCalculate = req.body;
     console.log('Received numbers to calculate', numbersToCalculate);
     let operation = numbersToCalculate.op;
-    let first = parseInt(numbersToCalculate.first);
-    let second = parseInt(numbersToCalculate.second);
+    let first = parseFloat(numbersToCalculate.first);
+    let second = parseFloat(numbersToCalculate.second);
     // some calculate function, post to history?
     calcualtionHistory.unshift(numbersToCalculate);
     let calculationResult = makeCalculation(operation, first, second);

@@ -7,7 +7,9 @@ function readyNow() {
     $('#add').on('click', addToData);
     $('#subtract').on('click', subtractToData);
     $('#multiply').on('click', multiplyToData);
-    $('#divide').on('click', divideToData)
+    $('#divide').on('click', divideToData);
+
+    getCalculationHistory();
 }
 
 let dataToCalculate = {};
@@ -51,7 +53,8 @@ function handleCalculationPost(responseFromPost) {
 }
 
 function calculationError() {
-    console.log('Something went wrong');        
+    alert('Could not complete calculation post request')
+    console.log('Something went wrong in postToCalculate response');        
 }
 
 function getCalculationHistory() {
@@ -62,6 +65,12 @@ function getCalculationHistory() {
     }).then(appendHistoryToDom).catch(getHistoryError);
 }
 
-function appendHistoryToDom() {
-    console.log('in appendHistoryToDom');
+function appendHistoryToDom(responseFromGet) {
+    console.log('in appendHistoryToDom', responseFromGet);
+    
+}
+
+function getHistoryError() {
+    alert('Could not retrieve history of calculations.');
+    console.log('Error on getCalculationHistory request');
 }
