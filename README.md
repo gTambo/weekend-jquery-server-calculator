@@ -29,8 +29,8 @@ Gotta get some numbers from the client, perform the selected operation on them i
 
 ## Stretch
 
-- [ ] HTML buttons for each number
-- [ ] build click events into client side data functions 
+- [x] HTML buttons for each number
+- [x] build click events into client side data functions 
 - [ ] update css file for button sizing, font, and orientation
 - [ ] prevent post if any input fields are empty 
 - [ ] show appropriate alert for missing field

@@ -133,8 +133,8 @@ function clearInputs() {
 
 function postToCalculate () {
     console.log('Data To Post: ', dataToCalculate);
-    dataToCalculate.first = $('#first-number').val();
-    dataToCalculate.second = $('#second-number').val();    
+    // dataToCalculate.first = $('#first-number').val();
+    // dataToCalculate.second = $('#second-number').val();    
     $.ajax({
         method: 'POST',
         url: '/tocalculate',
