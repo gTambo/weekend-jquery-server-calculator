@@ -14,6 +14,9 @@ Gotta get some numbers from the client, perform the selected operation on them i
 - [x] receive post on server 
 - [x] server calculation functions
 - [x] server store history
+- [x] split operations into 4 buttons
+- [x] send button clicks to post
+- [ ] modify client and server POSTs as necessary
 - [ ] server side get request for calculation result
 - [ ] get for history of requests
 - [ ] client side get result
