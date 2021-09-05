@@ -25,105 +25,106 @@ function readyNow() {
 
 let dataToCalculate = {};
 let mainScreen = [];
-let mathFunction = '';
 
 function intoMainInputField() {
     console.log( $(this).text() );
-    let toMathFunction = '';
+    let mathFunction = '';
     mainScreen.push($(this).text());
     for (const item of mainScreen) {
-        toMathFunction += item;
+        mathFunction += item;
     }
-    document.getElementById("main-input").value = toMathFunction;
-    // return toMathFunction;
+    document.getElementById("main-input").value = mathFunction;
+    convertToDataObj();
 }
 
-function putIntoInput() {
-    console.log('Should see in input: ', mathFunction);
-    $('#inner-screen').empty();
-    $('#inner-screen').text(`${mathFunction}`);
+function convertToDataObj () {
+    let dataString = $('#main-input').val();
+    let dataArray = dataString.split(' ');
+    console.log('in convertDataToObj', dataArray);
+    dataToCalculate.first = dataArray[0];
+    dataToCalculate.op = dataArray[1];
+    dataToCalculate.second = dataArray[2];
 }
 
-function passOperationToData() {
-/**    let operation = '';
-    switch($(this).attr('id')){
-        case 'add':
-            operation = '+';
-            break;
-        case 'subtract':
-            operation = '-';
-            break;
-        case 'multiply':
-            operation = '*';
-            break;
-        case 'divide':
-            operation = '/';
-            break;
-    }
-    console.log('operation: ', operation); */
-    
-    dataToCalculate.op = operation;
-}
+// function passOperationToData() {
+//     let operation = '';
+//     switch($(this).attr('id')){
+//         case 'add':
+//             operation = '+';
+//             break;
+//         case 'subtract':
+//             operation = '-';
+//             break;
+//         case 'multiply':
+//             operation = '*';
+//             break;
+//         case 'divide':
+//             operation = '/';
+//             break;
+//     }
+//     console.log('operation: ', operation);
 
-function passFirstToData() {
-    let first = '';
-    switch ($(this).attr('id')) {
-        case 'no1':
-            first = '1';
-            break;
-        case 'no2':
-            first = '2';
-            break;
-        case 'no3':
-            first = '3';
-            break;
-        case 'no4':
-            first = '4';
-            break;
-        case 'no5':
-            first = '5';
-            break;
-        case 'no6':
-            first = '6';
-            break;
-        case 'no7':
-            first = '7';    
-            break;
-        case 'no8':
-            first = '8';
-            break;
-        case 'no9':
-            first = '9';
-            break;
-        case 'no0':
-            first= '0';
-            break;
-        default:
-            break;
-    }
-}
+//     dataToCalculate.op = operation;
+// }
 
-/**
-function addToData() {
-    console.log('chose add');
-    dataToCalculate.op = '+';
-}
+// function passFirstToData() {
+//     let first = '';
+//     switch ($(this).attr('id')) {
+//         case 'no1':
+//             first = '1';
+//             break;
+//         case 'no2':
+//             first = '2';
+//             break;
+//         case 'no3':
+//             first = '3';
+//             break;
+//         case 'no4':
+//             first = '4';
+//             break;
+//         case 'no5':
+//             first = '5';
+//             break;
+//         case 'no6':
+//             first = '6';
+//             break;
+//         case 'no7':
+//             first = '7';    
+//             break;
+//         case 'no8':
+//             first = '8';
+//             break;
+//         case 'no9':
+//             first = '9';
+//             break;
+//         case 'no0':
+//             first= '0';
+//             break;
+//         default:
+//             break;
+//     }
+// }
 
-function subtractToData() {
-    console.log('chose subtract');
-    dataToCalculate.op = '-';
-}
+// function addToData() {
+//     console.log('chose add');
+//     dataToCalculate.op = '+';
+// }
 
-function multiplyToData() {
-    console.log('chose multiply');
-    dataToCalculate.op = '*'
-}
+// function subtractToData() {
+//     console.log('chose subtract');
+//     dataToCalculate.op = '-';
+// }
 
-function divideToData() {
-    console.log('chose divide');
-    dataToCalculate.op = '/';
-}
-*/
+// function multiplyToData() {
+//     console.log('chose multiply');
+//     dataToCalculate.op = '*'
+// }
+
+// function divideToData() {
+//     console.log('chose divide');
+//     dataToCalculate.op = '/';
+// }
+
 
 function clearInputs() {
     $('input').val('');
