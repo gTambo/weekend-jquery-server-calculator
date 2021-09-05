@@ -24,6 +24,8 @@ Gotta get some numbers from the client, perform the selected operation on them i
 - [x] append history to DOM
 - [x] don't forget the clear button function
 - [x] send all operation buttons through single function
+- [x] went back and added result on own GET
+
 
 ## Stretch
 

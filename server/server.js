@@ -9,6 +9,7 @@ app.use(express.urlencoded({ extended: true}));
 app.use(express.static('server/public'));
 
 let calcualtionHistory = [];
+let calculationResult = undefined;
 
 function makeCalculation (opString, num1, num2) {
     if (opString == '+') {
@@ -30,16 +31,21 @@ app.post('/tocalculate', (req, res) => {
     let second = parseFloat(numbersToCalculate.second);
     // some calculate function, post to history?
     calcualtionHistory.unshift(numbersToCalculate);
-    let calculationResult = makeCalculation(operation, first, second);
+    calculationResult = makeCalculation(operation, first, second);
     console.log('Calculation result: ', calculationResult);
     
+    res.send('Post success');
+});
+
+app.get('/calculation', (req, res) => {
+    console.log('GET calculation request received; sending result', calculationResult);
     res.send({ result: calculationResult});
-})
+});
 
 app.get('/history', (req, res) => {
     console.log('GET /history request received'); 
     res.send(calcualtionHistory);
-})
+});
 
 app.listen(PORT, () => {
     console.log(`Listening on port: ${PORT}`);

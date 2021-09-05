@@ -69,19 +69,35 @@ function postToCalculate () {
         method: 'POST',
         url: '/tocalculate',
         data: dataToCalculate,
-    }).then(handleCalculationPost).catch(calculationError);
+    }).then(handlePostToCalculateSuccess).catch(calculationPostError);
 }
 
-function handleCalculationPost(responseFromPost) {
+function handlePostToCalculateSuccess(responseFromPost) {
     console.log('got response', responseFromPost);
-    $('#current-result').empty();
-    $('#current-result').append(`<li>${responseFromPost.result}</li>`);
+    getCalculationResult();
     getCalculationHistory();
 }
 
-function calculationError() {
+function calculationPostError() {
     alert('Could not complete calculation post request')
     console.log('Something went wrong in postToCalculate response');        
+}
+
+function getCalculationResult() {
+    $.ajax({
+        method: 'GET',
+        url: '/calculation',
+    }).then(appendCalculationToDom).catch(getCalculationError);
+}
+
+function appendCalculationToDom(responseFromGetCalculation) {
+    $('#current-result').empty();
+    $('#current-result').append(`<li>${responseFromGetCalculation.result}</li>`);
+}
+
+function getCalculationError() {
+    alert('could not get calculation result');
+    console.log('Get calculation error');
 }
 
 function getCalculationHistory() {
