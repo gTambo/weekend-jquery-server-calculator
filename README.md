@@ -29,15 +29,16 @@ Gotta get some numbers from the client, perform the selected operation on them i
 
 ## Stretch
 
-- [ ] HTML and css to look like a calculator
-- [ ] 
-- [ ]
-- [ ] prevent post if any input fields are empty
-- [ ] show alert if empty
-- [ ]
+- [ ] HTML buttons for each number
+- [ ] build click events into client side data functions 
+- [ ] update css file for button sizing, font, and orientation
+- [ ] prevent post if any input fields are empty 
+- [ ] show appropriate alert for missing field
+- [ ] ???
 - [ ] Delete button for clearing history
 - [ ] Make delete request
 - [ ] Make pathway from historical entries back to server ('POST'?)
-- [ ]
+- [ ] show client response to post
+- [ ] empty history from DOM
 
 Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).

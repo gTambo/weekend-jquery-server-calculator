@@ -5,18 +5,47 @@ function readyNow() {
     $('#submit-button').on('click', postToCalculate); 
     $('#clear-button').on('click', clearInputs);
 
-    $('#add').on('click', passOperationToData);
-    $('#subtract').on('click', passOperationToData);
-    $('#multiply').on('click', passOperationToData);
-    $('#divide').on('click', passOperationToData);
+    $('#no1').on('click', intoMainInputField);
+    $('#no2').on('click', intoMainInputField);
+    $('#no3').on('click', intoMainInputField);
+    $('#no4').on('click', intoMainInputField);
+    $('#no5').on('click', intoMainInputField);
+    $('#no6').on('click', intoMainInputField);
+    $('#no7').on('click', intoMainInputField);
+    $('#no8').on('click', intoMainInputField);
+    $('#no9').on('click', intoMainInputField);
+    $('#no0').on('click', intoMainInputField);
+    $('#add').on('click', intoMainInputField);
+    $('#subtract').on('click', intoMainInputField);
+    $('#multiply').on('click', intoMainInputField);
+    $('#divide').on('click', intoMainInputField);
 
     getCalculationHistory();
 }
 
 let dataToCalculate = {};
+let mainScreen = [];
+let mathFunction = '';
+
+function intoMainInputField() {
+    console.log( $(this).text() );
+    let toMathFunction = '';
+    mainScreen.push($(this).text());
+    for (const item of mainScreen) {
+        toMathFunction += item;
+    }
+    document.getElementById("main-input").value = toMathFunction;
+    // return toMathFunction;
+}
+
+function putIntoInput() {
+    console.log('Should see in input: ', mathFunction);
+    $('#inner-screen').empty();
+    $('#inner-screen').text(`${mathFunction}`);
+}
 
 function passOperationToData() {
-    let operation = '';
+/**    let operation = '';
     switch($(this).attr('id')){
         case 'add':
             operation = '+';
@@ -31,8 +60,47 @@ function passOperationToData() {
             operation = '/';
             break;
     }
-    console.log('operation: ', operation);
+    console.log('operation: ', operation); */
+    
     dataToCalculate.op = operation;
+}
+
+function passFirstToData() {
+    let first = '';
+    switch ($(this).attr('id')) {
+        case 'no1':
+            first = '1';
+            break;
+        case 'no2':
+            first = '2';
+            break;
+        case 'no3':
+            first = '3';
+            break;
+        case 'no4':
+            first = '4';
+            break;
+        case 'no5':
+            first = '5';
+            break;
+        case 'no6':
+            first = '6';
+            break;
+        case 'no7':
+            first = '7';    
+            break;
+        case 'no8':
+            first = '8';
+            break;
+        case 'no9':
+            first = '9';
+            break;
+        case 'no0':
+            first= '0';
+            break;
+        default:
+            break;
+    }
 }
 
 /**
@@ -59,6 +127,7 @@ function divideToData() {
 
 function clearInputs() {
     $('input').val('');
+    mainScreen = [];
 }
 
 function postToCalculate () {
