@@ -11,32 +11,58 @@
 </head>
 <body>
     <h1>Calculate!</h1>
-    Enter single operation<input type="text" id="main-input" placeholder="e.g. 1 + 2"/>
+    <h2>Enter single operation</h2>
+    <p>Example: x*y</p>
     <!-- <input type="text"  id="test"> -->
     <!-- Enter a number<input type="number" id="first-number" placeholder="e.g 1234"> -->
-    Operation: <div id="operations">
-        <button id="no1">1</button>
-        <button id="no2">2</button>
-        <button id="no3">3</button>
-        <button id="no4">4</button>
-        <button id="no5">5</button>
-        <button id="no6">6</button>
-        <button id="no7">7</button>
-        <button id="no8">8</button>
-        <button id="no9">9</button>
-        <button id="no0">0</button>
-        <button id="dot">.</button>
-        <button id="add">+</button>
-        <button id="subtract">-</button>
-        <button id="multiply">*</button>
-        <button id="divide">/</button>
-    </div>
+    <input type="text" id="main-input" placeholder="e.g. 1 + 2"/>
+    <table id="operations">
+        <thead>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><button id="submit-button"> = </button></td>
+            </tr>
+            <tr>
+                <td><button id="no1">1</button></td>
+                <td><button id="no2">2</button></td>
+                <td><button id="no3">3</button></td>
+                <td><button class="op" id="add">+</button></td>
+            </tr>
+            <tr>
+                <td><button id="no4">4</button></td>
+                <td><button id="no5">5</button></td>
+                <td><button id="no6">6</button></td>
+                <td><button class="op" id="subtract">-</button></td>
+            </tr>
+            <tr>    
+                <td><button id="no7">7</button></td>
+                <td><button id="no8">8</button></td>
+                <td><button id="no9">9</button></td>
+                <td><button class="op" id="multiply">*</button></td>
+            </tr>
+            <tr>
+                <td><button id="clear-button">C</button></td>
+                <td><button id="no0">0</button></td>
+                <td><button id="dot">.</button></td>
+                <td><button class="op" id="divide">/</button></td>
+            </tr>
+            
+            
+        </tbody>
+    </table>
     <!-- Enter a number<input type="number" id="second-number" placeholder="e.g. 5678"> -->
-    <button id="submit-button"> = </button>
-    <button id="clear-button">C</button>
+    
     <ul id="current-result"></ul>
-    <table id="calcualtion-history">
-        <thead class="calculation-history-head">
+    <table id="calculation-history">
+        <thead class="calculation-history-head" <span>Previous Calculations:</span>
             <th id="old-first-number">Number</th>
             <th id="old-operation">Operation</th>
             <th id="old-second-number">Number</th>
