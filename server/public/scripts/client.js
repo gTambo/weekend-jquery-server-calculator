@@ -197,7 +197,7 @@ function getCalculationResult() {
 
 function appendCalculationToDom(responseFromGetCalculation) {
     $('#current-result').empty();
-    $('#current-result').append(`<li  class="answer">Answer: ${responseFromGetCalculation.result}</li>`);
+    $('#current-result').append(`<p class="answer">Answer: ${responseFromGetCalculation.result}</p>`);
 }
 
 function getCalculationError() {
