@@ -2,7 +2,7 @@ $(readyNow);
 
 function readyNow() {
     console.log('Document ready');
-    $('#submit-button').on('click', postToCalculate); 
+    $('#submit-button').on('click', convertToDataObj); 
     $('#clear-button').on('click', clearInputs);
 
     $('#no1').on('click', intoMainInputField);
@@ -38,25 +38,34 @@ function intoMainInputField() {
     }
     // document.getElementById("main-input").value = mathFunction;
     $('#main-input').val(mathFunction);
-    convertToDataObj();
+    // convertToDataObj();
 }
 
 function convertToDataObj () {
     let dataString = $('#main-input').val();
-    let dataArray = [];
     if (dataString.includes('+')) {
         dataToCalculate.op = '+';
         dataArray = dataString.split('+');
         dataToCalculate.first = dataArray[0];
         dataToCalculate.second = dataArray[1];
     } else if (dataString.includes('-')) {
-        dataToCalculate.op = '+';
+        dataToCalculate.op = '-';
         dataArray = dataString.split('-');
         dataToCalculate.first = dataArray[0];
         dataToCalculate.second = dataArray[1];
+    } else if (dataString.includes('*')) {
+        dataToCalculate.op = '*';
+        dataArray = dataString.split('*');
+        dataToCalculate.first = dataArray[0];
+        dataToCalculate.second = dataArray[1];
+    } else if (dataString.includes('/')) {
+        dataToCalculate.op = '/';
+        dataArray = dataString.split('/');
+        dataToCalculate.first = dataArray[0];
+        dataToCalculate.second = dataArray[1];
     }
-    
     console.log('in convertDataToObj', dataArray);
+    postToCalculate();
 }
 
 // function passOperationToData() {
@@ -146,8 +155,9 @@ function clearInputs() {
 
 function postToCalculate () {
     console.log('Data To Post: ', dataToCalculate);
-    if (dataArray.length != 3) {
-        alert('incomplete statement');
+    if (dataArray.length != 2) {
+        alert('check input; format must follow example: x+y')
+        clearInputs();
     }
     // dataToCalculate.first = $('#first-number').val();
     // dataToCalculate.second = $('#second-number').val();    
@@ -161,6 +171,7 @@ function postToCalculate () {
 function handlePostToCalculateSuccess(responseFromPost) {
     console.log('got response', responseFromPost);
     getCalculationResult();
+    // clearInputs(); // If you want to clear inputs after clicking '='
     getCalculationHistory();
 }
 
