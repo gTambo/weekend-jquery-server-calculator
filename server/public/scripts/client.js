@@ -5,6 +5,8 @@ function readyNow() {
     $('#submit-button').on('click', convertToDataObj); 
     $('#clear-button').on('click', clearInputs);
 
+    //Handle all button clicks
+    // should look into building this into the buttons 
     $('#no1').on('click', intoMainInputField);
     $('#no2').on('click', intoMainInputField);
     $('#no3').on('click', intoMainInputField);
@@ -21,10 +23,10 @@ function readyNow() {
     $('#multiply').on('click', intoMainInputField);
     $('#divide').on('click', intoMainInputField);
 
-
+    // Append history on page reload
     getCalculationHistory();
 }
-
+//  global variables to be called and manipulated for sending
 let dataToCalculate = {};
 let mainScreen = [];
 let dataArray = [];
@@ -38,22 +40,24 @@ function intoMainInputField() {
     }
     // document.getElementById("main-input").value = mathFunction;
     $('#main-input').val(mathFunction);
-    // convertToDataObj();
+    // convertToDataObj(); // rerouted to line 5
 }
 
 function convertToDataObj () {
+    // getting whatever string ends up in the input field "main-input"
     let dataString = $('#main-input').val();
+    // Findidng which mathematical operation
     if (dataString.includes('+')) {
-        dataToCalculate.op = '+';
-        dataArray = dataString.split('+');
-        dataToCalculate.first = dataArray[0];
-        dataToCalculate.second = dataArray[1];
-    } else if (dataString.includes('-')) {
+        dataToCalculate.op = '+'; // assigning operation to data, if found in string
+        dataArray = dataString.split('+'); // converting contents to array of strings, removing operation '+'
+        dataToCalculate.first = dataArray[0]; // only expecting 2 numbers from client
+        dataToCalculate.second = dataArray[1]; // and assigning to data object
+    } else if (dataString.includes('-')) { // same as above, but for '-'
         dataToCalculate.op = '-';
         dataArray = dataString.split('-');
         dataToCalculate.first = dataArray[0];
         dataToCalculate.second = dataArray[1];
-    } else if (dataString.includes('*')) {
+    } else if (dataString.includes('*')) { // check for each math operation
         dataToCalculate.op = '*';
         dataArray = dataString.split('*');
         dataToCalculate.first = dataArray[0];
@@ -63,15 +67,17 @@ function convertToDataObj () {
         dataArray = dataString.split('/');
         dataToCalculate.first = dataArray[0];
         dataToCalculate.second = dataArray[1];
-    } else {
+    } else { // in case something unusual/unexpected is entered
         alert('incomplete function');
         console.log('Do not POST');
         clearInputs();
-        return;
+        return; // Return so we don't go to POST
     }
     console.log('in convertDataToObj', dataArray);
     postToCalculate();
 }
+
+// Older functions for base functionality below (lines 82-121)
 
 // function passOperationToData() {
 //     let operation = '';
@@ -92,44 +98,6 @@ function convertToDataObj () {
 //     console.log('operation: ', operation);
 
 //     dataToCalculate.op = operation;
-// }
-
-// function passFirstToData() {
-//     let first = '';
-//     switch ($(this).attr('id')) {
-//         case 'no1':
-//             first = '1';
-//             break;
-//         case 'no2':
-//             first = '2';
-//             break;
-//         case 'no3':
-//             first = '3';
-//             break;
-//         case 'no4':
-//             first = '4';
-//             break;
-//         case 'no5':
-//             first = '5';
-//             break;
-//         case 'no6':
-//             first = '6';
-//             break;
-//         case 'no7':
-//             first = '7';    
-//             break;
-//         case 'no8':
-//             first = '8';
-//             break;
-//         case 'no9':
-//             first = '9';
-//             break;
-//         case 'no0':
-//             first= '0';
-//             break;
-//         default:
-//             break;
-//     }
 // }
 
 // function addToData() {
@@ -154,33 +122,34 @@ function convertToDataObj () {
 
 
 function clearInputs() {
-    $('input').val('');
-    mainScreen = [];
-    return;
+    $('input').val(''); 
+    mainScreen = []; // reset string to input as well
+    return; // don't continue from here
 }
 
 function postToCalculate () {
     console.log('Data To Post: ', dataToCalculate);
+    // Prevent bad or incomplete data
+    // If undefined properties or wrong number of properties in array, don't continue
     if (dataToCalculate.first === '' || dataToCalculate.second === '' || dataArray.length != 2) {
         console.log('Incomplete Function, do not POST!');
         alert('check input; format must follow example: x+y')
         clearInputs();
         return;
     }
-    // dataToCalculate.first = $('#first-number').val();
+    // dataToCalculate.first = $('#first-number').val(); // from baseline functionality
     // dataToCalculate.second = $('#second-number').val();    
     $.ajax({
         method: 'POST',
         url: '/tocalculate',
-        data: dataToCalculate,
+        data: dataToCalculate, 
     }).then(handlePostToCalculateSuccess).catch(calculationPostError);
 }
 
 function handlePostToCalculateSuccess(responseFromPost) {
-    console.log('got response', responseFromPost);
-    getCalculationResult();
-    // clearInputs(); // If you want to clear inputs after clicking '='
-    getCalculationHistory();
+    console.log('got response', responseFromPost); // Expecting success message
+    getCalculationResult(); // now call the separate GET, per instructions
+    getCalculationHistory(); // get history again after new calculation
 }
 
 function calculationPostError() {
@@ -219,7 +188,7 @@ function appendHistoryToDom(responseFromGet) {
     for (let i = 0; i < responseFromGet.length; i++) {
         let prevCalc = responseFromGet[i];
         $('#calc-history-body').append(`
-            <tr>
+            <tr type="" class="previous-calc" >
                 <td>${prevCalc.first}</td>
                 <td>${prevCalc.op}</td>
                 <td>${prevCalc.second}</td>

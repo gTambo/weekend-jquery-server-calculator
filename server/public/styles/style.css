@@ -16,7 +16,7 @@ body {
 
 #calculation-history{
     margin: auto;
-    background-color: darkgray;
+    background-color: gray;
     width: 295px;
     text-align: center;
     border-radius: 4px;
@@ -117,6 +117,12 @@ p{
     margin: 0 auto;
     margin-top: 2%;
     width: 185px;
+}
+
+.previous-calc{
+    border: 2px inset #5f480dd5;
+    padding: 2px;
+    background-color: whitesmoke;
 }
 
 button:hover{
