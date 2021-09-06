@@ -33,7 +33,7 @@ Gotta get some numbers from the client, perform the selected operation on them i
 - [x] build click events into client side data functions 
 - [x] Allow user to type or click buttons successfully
 - [ ] update css file for button sizing, font, and orientation
-- [ ] prevent post if any input fields are empty 
+- [x] prevent post if any input fields are empty 
 - [ ] show appropriate alert for missing field
 - [ ] ???
 - [ ] Delete button for clearing history

@@ -63,6 +63,11 @@ function convertToDataObj () {
         dataArray = dataString.split('/');
         dataToCalculate.first = dataArray[0];
         dataToCalculate.second = dataArray[1];
+    } else {
+        alert('incomplete function');
+        console.log('Do not POST');
+        clearInputs();
+        return;
     }
     console.log('in convertDataToObj', dataArray);
     postToCalculate();
@@ -151,13 +156,16 @@ function convertToDataObj () {
 function clearInputs() {
     $('input').val('');
     mainScreen = [];
+    return;
 }
 
 function postToCalculate () {
     console.log('Data To Post: ', dataToCalculate);
-    if (dataArray.length != 2) {
+    if (dataToCalculate.first === '' || dataToCalculate.second === '' || dataArray.length != 2) {
+        console.log('Incomplete Function, do not POST!');
         alert('check input; format must follow example: x+y')
         clearInputs();
+        return;
     }
     // dataToCalculate.first = $('#first-number').val();
     // dataToCalculate.second = $('#second-number').val();    
