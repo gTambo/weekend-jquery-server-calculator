@@ -28,7 +28,7 @@ body {
 }
 
 #current-result{
-    border: 2px solid #495069;
+    border: 4px inset #4950699a;
     border-radius: 4px;
     min-height: 50px;
     background-color: rgb(203, 248, 134);
@@ -47,7 +47,7 @@ body {
 input{
     outline: 0;
     position: static;
-    border: 4px solid rgba(0,0,0,0.2);
+    border: 4px solid rgba(0, 0, 0, 0.281);
     color: #495069;
     background-color: whitesmoke;
     width: calc(100%-10px);
@@ -58,6 +58,8 @@ input{
     font-size: 20px;
     box-shadow: 0 4px rgba(0,0,0,0.2);
 }
+
+/* Initial table and hover stylings found here: https://dev.to/anitamaity/how-to-make-a-calculator-using-only-html-and-css-12ol */
 button{
     outline: 0;
     position: relative;
@@ -76,6 +78,7 @@ button{
 .op{
     background-color: #f1ff92;
     position: relative;
+    margin-right: 10px;
 }
 
 
@@ -84,23 +87,65 @@ button{
     position: relative;
     display: block;
     background-color: #ff9fa8;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 
 #submit-button{
+    float: left;
+    position: relative;
+    display: block;
     background-color: rgb(172, 115, 172);
+    margin-bottom: 15px;
 }
 
 p{
-    
+    padding: 4px;
+    margin-left: 10%;
+    width: 10rem;
+    background-color: lightcyan;
+    border: 4px inset rgba(0,0,0,0.2);
+    color: hotpink;
+    border-radius: 4px;
 }
 
 #history-label{
+    color: #495069;
     background-color: goldenrod;
     padding: 1%;
     border: 2px solid #495069;
     margin: 0 auto;
     margin-top: 2%;
     width: 185px;
+}
+
+button:hover{
+    border: 0 solid #000;
+    color: #495069;
+    background-color: hotpink;
+    border-radius: 4px;
+    width: 60px;
+    height: 50px;
+    float: left;
+    margin: 5px;
+    font-size: 20px;
+    box-shadow: 0 4px #644294;
+}
+
+.op:hover{
+    background-color: #e7f56b;
+    box-shadow: 0 4px #b7c259;
+}
+
+#submit-button:hover{
+    background-color: #f775f7;
+    box-shadow: #865986a9;
+}
+
+#clear-button:hover{
+    float: left;
+    display: block;
+    background-color: #f297a0;
+    margin-bottom: 15px;
+    box-shadow: 0 4px #cc7f86;
 }
