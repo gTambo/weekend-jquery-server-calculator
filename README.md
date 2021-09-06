@@ -38,7 +38,7 @@ Gotta get some numbers from the client, perform the selected operation on them i
 - [ ] ???
 - [ ] Delete button for clearing history
 - [ ] Make delete request
-- [ ] Make pathway from historical entries back to server ('POST'?)
+- [x] Make pathway from historical entries back to server
 - [ ] show client response to post
 - [ ] empty history from DOM
 

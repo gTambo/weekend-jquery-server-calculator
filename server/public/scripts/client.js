@@ -4,6 +4,8 @@ function readyNow() {
     console.log('Document ready');
     $('#submit-button').on('click', convertToDataObj); 
     $('#clear-button').on('click', clearInputs);
+    // click event for history item
+    $('#calc-history-body').on('click', 'li', intoMainInputField);
 
     //Handle all button clicks
     // should look into building this into the buttons 
@@ -32,9 +34,9 @@ let mainScreen = [];
 let dataArray = [];
 
 function intoMainInputField() {
-    console.log( $(this).text() );
+    console.log( $(this).text().replace(/\s+/g, ' ').trim() ); // was getting a lot of extra spaces??
     let mathFunction = '';
-    mainScreen.push($(this).text());
+    mainScreen.push($(this).text().replace(/\s+/g, ' ').trim()); // trimmed off the extra spaces, felt like treating the symptom not the sickness
     for (const item of mainScreen) {
         mathFunction += item;
     }
