@@ -15,16 +15,19 @@ function readyNow() {
     $('#no8').on('click', intoMainInputField);
     $('#no9').on('click', intoMainInputField);
     $('#no0').on('click', intoMainInputField);
+    $('#dot').on('click', intoMainInputField);
     $('#add').on('click', intoMainInputField);
     $('#subtract').on('click', intoMainInputField);
     $('#multiply').on('click', intoMainInputField);
     $('#divide').on('click', intoMainInputField);
+
 
     getCalculationHistory();
 }
 
 let dataToCalculate = {};
 let mainScreen = [];
+let dataArray = [];
 
 function intoMainInputField() {
     console.log( $(this).text() );
@@ -33,17 +36,27 @@ function intoMainInputField() {
     for (const item of mainScreen) {
         mathFunction += item;
     }
-    document.getElementById("main-input").value = mathFunction;
+    // document.getElementById("main-input").value = mathFunction;
+    $('#main-input').val(mathFunction);
     convertToDataObj();
 }
 
 function convertToDataObj () {
     let dataString = $('#main-input').val();
-    let dataArray = dataString.split(' ');
+    let dataArray = [];
+    if (dataString.includes('+')) {
+        dataToCalculate.op = '+';
+        dataArray = dataString.split('+');
+        dataToCalculate.first = dataArray[0];
+        dataToCalculate.second = dataArray[1];
+    } else if (dataString.includes('-')) {
+        dataToCalculate.op = '+';
+        dataArray = dataString.split('-');
+        dataToCalculate.first = dataArray[0];
+        dataToCalculate.second = dataArray[1];
+    }
+    
     console.log('in convertDataToObj', dataArray);
-    dataToCalculate.first = dataArray[0];
-    dataToCalculate.op = dataArray[1];
-    dataToCalculate.second = dataArray[2];
 }
 
 // function passOperationToData() {
@@ -133,6 +146,9 @@ function clearInputs() {
 
 function postToCalculate () {
     console.log('Data To Post: ', dataToCalculate);
+    if (dataArray.length != 3) {
+        alert('incomplete statement');
+    }
     // dataToCalculate.first = $('#first-number').val();
     // dataToCalculate.second = $('#second-number').val();    
     $.ajax({
