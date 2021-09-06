@@ -127,7 +127,7 @@ function clearInputs() {
     return; // don't continue from here
 }
 
-function postToCalculate () {
+function postToCalculate () { // lets send this calculation to the server!
     console.log('Data To Post: ', dataToCalculate);
     // Prevent bad or incomplete data
     // If undefined properties or wrong number of properties in array, don't continue
@@ -141,8 +141,8 @@ function postToCalculate () {
     // dataToCalculate.second = $('#second-number').val();    
     $.ajax({
         method: 'POST',
-        url: '/tocalculate',
-        data: dataToCalculate, 
+        url: '/tocalculate', // Matching server side app.post url
+        data: dataToCalculate, // from main input, converted to an object with 3 properties
     }).then(handlePostToCalculateSuccess).catch(calculationPostError);
 }
 
@@ -152,29 +152,29 @@ function handlePostToCalculateSuccess(responseFromPost) {
     getCalculationHistory(); // get history again after new calculation
 }
 
-function calculationPostError() {
+function calculationPostError() { // complete the request loop if something goes wrong
     alert('Could not complete calculation post request')
-    console.log('Something went wrong in postToCalculate response');        
+    console.log('Something went wrong in postToCalculate response'); // messsage specific to the POST
 }
 
-function getCalculationResult() {
+function getCalculationResult() { // Using a GET for the calculation answer
     $.ajax({
         method: 'GET',
-        url: '/calculation',
+        url: '/calculation', // matches GET url and POST url
     }).then(appendCalculationToDom).catch(getCalculationError);
 }
 
 function appendCalculationToDom(responseFromGetCalculation) {
-    $('#current-result').empty();
-    $('#current-result').append(`<p class="answer">Answer: ${responseFromGetCalculation.result}</p>`);
+    $('#current-result').empty(); // Get rid of any lingering content
+    $('#current-result').append(`<p class="answer">Answer: ${responseFromGetCalculation.result}</p>`); // appending to div in a p tag for simple display
 }
 
-function getCalculationError() {
+function getCalculationError() { // close response loop
     alert('could not get calculation result');
-    console.log('Get calculation error');
+    console.log('Get calculation error'); // stay specific, so it's clear where the error happened
 }
 
-function getCalculationHistory() {
+function getCalculationHistory() { // separate GET for history, called on page load and after successful POST
     console.log('getting calulation history');
     $.ajax({
         method: 'GET',
@@ -185,15 +185,14 @@ function getCalculationHistory() {
 function appendHistoryToDom(responseFromGet) {
     console.log('in appendHistoryToDom', responseFromGet);
     $('#calc-history-body').empty();
+    // in hindsight, it would have looked cleaner to append history as an unordered list
     for (let i = 0; i < responseFromGet.length; i++) {
-        let prevCalc = responseFromGet[i];
+        let prevCalc = responseFromGet[i]; 
         $('#calc-history-body').append(`
-            <tr type="" class="previous-calc" >
-                <td>${prevCalc.first}</td>
-                <td>${prevCalc.op}</td>
-                <td>${prevCalc.second}</td>
-            </tr>
-        `);
+            <li class="previous-calc" > 
+                ${prevCalc.first}${prevCalc.op}${prevCalc.second} 
+            </li>
+        `); // Goal, make this clickable, for resubmission to POST
     }
 }
 

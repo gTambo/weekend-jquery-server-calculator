@@ -61,20 +61,24 @@
     <!-- Enter a number<input type="number" id="second-number" placeholder="e.g. 5678"> -->
     
     <div id="current-result"></div>
-    <p id="history-label">Previous Calculations</p>
-    <table id="calculation-history">
+    <!-- <table id="calculation-history">
+        <label for="calculation-history" id="history-label">Previous Calculations</label>
         <thead class="calculation-history-head" />
             <th id="old-first-number">Number</th>
             <th id="old-operation">Operation</th>
             <th id="old-second-number">Number</th>
         </thead>
         <tbody id="calc-history-body">
-            <!-- <tr>
+            <tr>
                 <td>Some number</td>
                 <td>times, divided by, plus, minus</td>
                 <td>Some other number</td>
-            </tr> -->
+            </tr>
         </tbody>
-    </table>
+    </table> -->
+    <form id="calc-history">
+    <label for="calc-history" id="history-label">Previous Calculations</label>
+        <ul id="calc-history-body"></ul>
+    </form>
 </body>
 </html>

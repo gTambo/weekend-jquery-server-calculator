@@ -14,8 +14,9 @@ body {
     border-radius: 4px;
 }
 
-#calculation-history{
-    margin: auto;
+#calc-history{
+    margin: 0 auto;
+    margin-top: 5px;
     background-color: gray;
     width: 295px;
     text-align: center;

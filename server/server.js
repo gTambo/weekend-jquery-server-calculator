@@ -23,7 +23,7 @@ function makeCalculation (opString, num1, num2) {
     }
 }
 
-app.post('/tocalculate', (req, res) => {
+app.post('/tocalculate', (req, res) => { // Matching client side request url
     const numbersToCalculate = req.body;
     console.log('Received numbers to calculate', numbersToCalculate);
     let operation = numbersToCalculate.op;
